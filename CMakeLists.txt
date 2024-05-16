@@ -1,13 +1,10 @@
-# The MiniCppStarter
-#
-# Build and run by calling:
-# cmake -S. -Bbuild && cmake --build build && ./build/Playground
+# Compile and execute : `cmake -S. -Bbuild && cmake --build build && ./build/App`
 
 cmake_minimum_required(VERSION 3.16)
 
 # ---- Project ----
 
-project(Playground LANGUAGES CXX)
+project(App LANGUAGES CXX)
 
 # ---- Fetch CPM ----
 
@@ -22,14 +19,12 @@ include(${CMAKE_CURRENT_BINARY_DIR}/cmake/CPM.cmake)
 # ---- Add dependencies via CPM ----
 # See https://github.com/TheLartians/CPM.cmake for details and examples
 
-# the ModernCppStarter defines an example project called 'Greeter'
-CPMAddPackage("gh:TheLartians/ModernCppStarter@0.18.0")
-
 # ---- Create executable ----
-
 # add your source files here
-add_executable(Playground main.cpp)
+add_subdirectory(lib)
+include_directories(lib)
+add_executable(${PROJECT_NAME} main.cpp)
 # link to your dependencies' targets here
-target_link_libraries(Playground Greeter::Greeter)
+target_link_libraries(${PROJECT_NAME} lib${PROJECT_NAME})
 # setup your target's properties
-set_target_properties(Playground PROPERTIES CXX_STANDARD 17)
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17)
