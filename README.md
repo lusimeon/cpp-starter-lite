@@ -1,4 +1,4 @@
-# CPP-starter-light
+# CPP-starter-lite
 
 > Forked from https://github.com/TheLartians/MiniCppStarter and adapted to my specific needs.
 
